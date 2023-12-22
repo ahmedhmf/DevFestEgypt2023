@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {afterNextRender, afterRender, Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
@@ -30,5 +30,29 @@ export class AppComponent {
     const itemIndex = this.cartService.cart.findIndex(x => x.item.id === item.id);
     itemIndex < 0 ? this.cartService.cart.push({item, amount: 1}) : this.cartService.cart[itemIndex].amount += 1;
     this.cartService.calculateTotal();
+  }
+
+  //* When any change happen this hook is ran
+  ngOnChanges(){}
+  //* After the component is initialized this hook is ran
+  ngOnInit(){}
+  //* After angular checks for changes this hook is ran it is mostly used for manuall change detection
+  ngDoCheck(){}
+  //* This is ran after angular finishes the rendering of child views of components.
+  //* Can be used for interaction with DOM
+  ngAfterViewInit(){}
+
+  //* Ran when component is being destroyed. Used mostly for cleaning up
+  ngOnDestroy() {}
+
+  constructor(){
+    //! a call back to do every time the component is rendered
+    afterRender(()=>{
+      // Do Something
+    })
+    //! a call back to do next time the component is rendered
+    afterNextRender(()=>{
+      // Do Something
+    })
   }
 }

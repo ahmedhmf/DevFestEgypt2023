@@ -1,0 +1,36 @@
+<mat-toolbar class="title-toolbar">
+  <mat-toolbar-row>
+    <span class="title-center">GeeksShop</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" [matMenuTriggerFor]="menu">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" style="width: 300px">
+      <div style="margin: 0 26px;">Cart Items</div>
+
+      <div *ngIf="cartService.cart.length === 0" style="margin: 0 26px; border: 1px solid black; padding: 10px;">No Items Selected</div>
+      <table *ngIf="cartService.cart.length > 0" style="margin: 0 26px; border: 1px solid black; padding: 10px;">
+        <tr>
+          <th>Item</th>
+          <th>Amount</th>
+          <th>Price</th>
+        </tr>
+        <tr *ngFor="let cartItem of cartService.cart" >
+          <td>
+            {{cartItem.item.name}}
+          </td>
+          <td>{{cartItem.amount}}</td>
+          <td>{{cartItem.item.price * cartItem.amount}}</td>
+          <td><button mat-mini-fab class="example-icon" aria-label="Example icon-button with share icon" [matMenuTriggerFor]="menu" (click)="removeItem(cartItem.item.id)">
+            <mat-icon>remove</mat-icon>
+          </button></td>
+        </tr>
+        <tr>
+          <td >total</td>
+          <td></td>
+          <td>{{cartService.total}}</td>
+        </tr>
+      </table>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

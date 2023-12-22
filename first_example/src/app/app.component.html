@@ -1,3 +1,8 @@
 <app-navbar></app-navbar>
-<app-product-cards (addItemToCart)="addItemToCart($event)" [products]="items"></app-product-cards>
+@defer (on timer(1000)){
+  <app-product-cards (addItemToCart)="addItemToCart($event)" [products]="items"></app-product-cards>
+}
+@placeholder (){
+  <div>Waiting</div>
+}
 

@@ -11,6 +11,7 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {Product} from "../models/product.model";
 import {ChangeColorDirective} from "../directive/change-color.directive";
+import {ToEgpPipe} from "../pipes/to-egp.pipe";
 
 @Component({
   selector: 'app-product-cards',
@@ -25,7 +26,8 @@ import {ChangeColorDirective} from "../directive/change-color.directive";
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    ChangeColorDirective
+    ChangeColorDirective,
+    ToEgpPipe
   ],
   templateUrl: './product-cards.component.html',
   styleUrl: './product-cards.component.css',

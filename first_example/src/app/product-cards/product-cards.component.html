@@ -8,7 +8,7 @@
       </ng-container>
       <mat-icon style="display: none">star</mat-icon>
       <mat-card-title changeColor>{{item.name}}</mat-card-title>
-      <mat-card-subtitle>{{item.price}}</mat-card-subtitle>
+      <mat-card-subtitle>{{item.price | toEgp | currency:'EGP' }}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image style="width: 100px; align-self: center;" [src]="item.picture" alt="Photo of {{item.name}}">
     <mat-card-actions class="as-actions" align="end">

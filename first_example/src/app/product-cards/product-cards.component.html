@@ -1,27 +1,39 @@
 <div class="products">
-  <mat-card class="example-card as-card-cat-1 as-card-style-1" *ngFor="let item of products; let even = even">
-    <mat-card-header>
-      <ng-container [ngSwitch]="item.type">
-        <div mat-card-avatar *ngSwitchCase="'Water Bottle'" style="background-color: purple;" class="example-header-image"></div>
-        <div mat-card-avatar *ngSwitchCase="'Phone'" style="background-color: red;"></div>
-        <div mat-card-avatar *ngSwitchCase="'CopyBook'" style="background-color: green;"></div>
-      </ng-container>
-      <mat-icon style="display: none">star</mat-icon>
-      <mat-card-title changeColor>{{item.name}}</mat-card-title>
-      <mat-card-subtitle>{{item.price | toEgp | currency:'EGP' }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image style="width: 100px; align-self: center;" [src]="item.picture" alt="Photo of {{item.name}}">
-    <mat-card-actions class="as-actions" align="end">
-      <mat-form-field class="as-qty">
-        <mat-label>Select qty</mat-label>
-        <mat-select value="1">
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-          <mat-option value="3">3</mat-option>
-          <mat-option value="4">4</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-button mat-stroked-button color="primary" (click)="addClick(item)">Add</button>
-    </mat-card-actions>
-  </mat-card>
+  @for (item of products; track item){
+    <mat-card class="example-card as-card-cat-1 as-card-style-1">
+      <mat-card-header>
+        @switch (item.type){
+          @case ("Water Bottle"){
+            <div mat-card-avatar style="background-color: purple;" class="example-header-image"></div>
+          }
+          @case ("Phone"){
+            <div mat-card-avatar style="background-color: red;" class="example-header-image"></div>
+          }
+          @default{
+            <div mat-card-avatar style="background-color: green;"></div>
+          }
+        }
+        <mat-icon style="display: none">star</mat-icon>
+        <mat-card-title changeColor>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{item.price | toEgp | currency:'EGP' }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image style="width: 100px; align-self: center;" [src]="item.picture" alt="Photo of {{item.name}}">
+      <mat-card-actions class="as-actions" align="end">
+        <mat-form-field class="as-qty">
+          <mat-label>Select qty</mat-label>
+          <mat-select value="1">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button mat-stroked-button color="primary" (click)="addClick(item)">Add</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+  @empty {
+    No Items Available
+  }
+
 </div>

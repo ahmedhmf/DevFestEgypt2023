@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, inject, Input, Output} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
@@ -10,7 +10,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {Product} from "../models/product.model";
-import {CartService} from "../services/cart.service";
+import {ChangeColorDirective} from "../directive/change-color.directive";
 
 @Component({
   selector: 'app-product-cards',
@@ -24,10 +24,12 @@ import {CartService} from "../services/cart.service";
     MatCardModule,
     MatFormFieldModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    ChangeColorDirective
   ],
   templateUrl: './product-cards.component.html',
-  styleUrl: './product-cards.component.css'
+  styleUrl: './product-cards.component.css',
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductCardsComponent {
   @Input({required:true}) products: Product[] = [];

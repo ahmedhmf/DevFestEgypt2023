@@ -1,13 +1,13 @@
 <div class="products">
-  <mat-card class="example-card as-card-cat-1 as-card-style-1" *ngFor="let item of products">
+  <mat-card class="example-card as-card-cat-1 as-card-style-1" *ngFor="let item of products; let even = even">
     <mat-card-header>
       <ng-container [ngSwitch]="item.type">
         <div mat-card-avatar *ngSwitchCase="'Water Bottle'" style="background-color: purple;" class="example-header-image"></div>
         <div mat-card-avatar *ngSwitchCase="'Phone'" style="background-color: red;"></div>
         <div mat-card-avatar *ngSwitchCase="'CopyBook'" style="background-color: green;"></div>
       </ng-container>
-
-      <mat-card-title>{{item.name}}</mat-card-title>
+      <mat-icon style="display: none">star</mat-icon>
+      <mat-card-title changeColor>{{item.name}}</mat-card-title>
       <mat-card-subtitle>{{item.price}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image style="width: 100px; align-self: center;" [src]="item.picture" alt="Photo of {{item.name}}">

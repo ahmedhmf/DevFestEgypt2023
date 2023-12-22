@@ -15,7 +15,7 @@ export const products: Product[] = [
     price: 2.57,
     picture: 'assets/images/ThermalBottleAngular.webp',
     type: 'Water Bottle',
-    new: false
+    new: true
   },
   {
     id:2,
